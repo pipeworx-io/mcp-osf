@@ -1,20 +1,32 @@
 {
   "name": "@pipeworx/mcp-osf",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "OSF (Open Science Framework, by the Center for Open Science) MCP.",
   "type": "module",
   "main": "src/index.ts",
   "types": "src/index.ts",
+  "bin": {
+    "mcp-osf": "bin/cli.js"
+  },
   "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "osf"],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pipeworx-io/mcp-osf"
+    "url": "git+https://github.com/pipeworx-io/mcp-osf.git"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "tsx": "^4.19.0"
+  },
   "devDependencies": {
-    "typescript": "^5.7.0"
+    "typescript": "^5.9.3",
+    "@cloudflare/workers-types": "^4.20260405.1"
+  },
+  "pipeworx": {
+    "sourceHash": "v1-6b4fbce2f6ed83d92e20b78255687f3e7accbf5fafe1b9d7683958af13946cb9",
+    "sourceCommit": "adb69d997f82a62e8e22b594488c7d04a227db35"
   }
 }

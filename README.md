@@ -2,7 +2,7 @@
 
 OSF (Open Science Framework, by the Center for Open Science) MCP.
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1476+ live data sources.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1679+ live data sources.
 
 ## Tools
 
@@ -10,7 +10,8 @@ Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents 
 |------|-------------|
 | `search_projects` | OSF (Open Science Framework, by the Center for Open Science): search public research projects ("nodes") by title. Returns id, title, description, category, creation date, and tags. Keyless public data; the API can be slow. |
 | `get_project` | OSF: fetch metadata for a single public research project (node) by its OSF id (e.g. "abc12"). Returns title, description, category, dates, tags, and public flag. |
-| `search_preprints` | OSF: search public preprints by title (Open Science Framework, by the Center for Open Science). Returns id, title, description, publication date, DOI, and tags. Keyless public data; the API can be slow. |
+| `search_preprints` | DEPRECATED ALIAS for osf_search_preprints — identical behavior, kept for existing callers. New callers should use osf_search_preprints. |
+| `osf_search_preprints` | OSF: search public preprints by title (Open Science Framework, by the Center for Open Science). Returns id, title, description, publication date, DOI, and tags. Keyless public data; the API can be slow. |
 
 ## Quick Start
 
@@ -56,9 +57,45 @@ directly, instead of just this one's:
 }
 ```
 
-Both URLs reach the same gateway and the same 1476+ data sources. The
+Both URLs reach the same gateway and the same 1679+ data sources. The
 only difference is which pack's tools are listed **directly**; `ask_pipeworx`
 reaches all of them from either one.
+
+## No MCP client? Call it over HTTP
+
+```bash
+curl -X POST https://gateway.pipeworx.io/v1/tools/osf_search_projects \
+  -H 'Content-Type: application/json' \
+  -d '{"query":"climate change"}'
+```
+
+No account needed for the first calls. Inspect any tool: `GET https://gateway.pipeworx.io/v1/tools/osf_search_projects`. Find one: `POST https://gateway.pipeworx.io/v1/tools/search_packs` with `{"query":"..."}`.
+
+## Standalone (no gateway account)
+
+This package also runs as a local stdio MCP server — no Pipeworx account, no
+gateway round-trip:
+
+```json
+{
+  "mcpServers": {
+    "osf": {
+      "command": "npx",
+      "args": ["-y", "@pipeworx/mcp-osf"]
+    }
+  }
+}
+```
+
+Or run it directly to confirm it starts:
+
+```bash
+npx -y @pipeworx/mcp-osf
+```
+
+It speaks MCP over stdin/stdout and answers `initialize`/`tools/list`/`tools/call`
+for **only** this pack's tools — none of the shared meta-tools the gateway
+connection above adds. Same source, same tools, no ask_pipeworx routing.
 
 ## Using with ask_pipeworx
 
@@ -79,13 +116,3 @@ The gateway picks the right tool and fills the arguments automatically.
 ## License
 
 MIT
-
-## No MCP client? Call it over HTTP
-
-```bash
-curl -X POST https://gateway.pipeworx.io/v1/tools/osf_search_projects \
-  -H 'Content-Type: application/json' \
-  -d '{"query":"climate change"}'
-```
-
-No account needed for the first calls. Inspect any tool: `GET https://gateway.pipeworx.io/v1/tools/osf_search_projects`. Find one: `POST https://gateway.pipeworx.io/v1/tools/search_packs` with `{"query":"..."}`.
