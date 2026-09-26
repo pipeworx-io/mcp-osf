@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-osf",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "OSF (Open Science Framework, by the Center for Open Science) MCP.",
   "type": "module",
   "main": "src/index.ts",
@@ -26,7 +26,7 @@
     "@cloudflare/workers-types": "^4.20260405.1"
   },
   "pipeworx": {
-    "sourceHash": "v1-6b4fbce2f6ed83d92e20b78255687f3e7accbf5fafe1b9d7683958af13946cb9",
-    "sourceCommit": "adb69d997f82a62e8e22b594488c7d04a227db35"
+    "sourceHash": "v1-fcc6e8175659044734af0ae79e2b8ac0ee99432d6f61a99fa86b5fd9f34940a8",
+    "sourceCommit": "4d51421bd010ad9a322c2245b70b401604912eff"
   }
 }
