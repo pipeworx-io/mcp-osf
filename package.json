@@ -1,7 +1,7 @@
 {
   "name": "@pipeworx/mcp-osf",
-  "version": "0.1.2",
-  "description": "OSF (Open Science Framework, by the Center for Open Science) MCP.",
+  "version": "0.1.3",
+  "description": "OSF (Open Science Framework, by the Center for Open Science) MCP. Keyless public-data API (JSON:API). https://api.osf.io/v2 The OSF API can be slow; responses may take several seconds.",
   "type": "module",
   "main": "src/index.ts",
   "types": "src/index.ts",
@@ -26,7 +26,7 @@
     "@cloudflare/workers-types": "^4.20260405.1"
   },
   "pipeworx": {
-    "sourceHash": "v1-fcc6e8175659044734af0ae79e2b8ac0ee99432d6f61a99fa86b5fd9f34940a8",
-    "sourceCommit": "4d51421bd010ad9a322c2245b70b401604912eff"
+    "sourceHash": "v1-7adc5d267338c86a083d7c9eb6ab0ef1383fee59a3cee5a41ca46102e93bed10",
+    "sourceCommit": "f54ad77e789f27fe393978f9c080b5b18c87bb4f"
   }
 }
