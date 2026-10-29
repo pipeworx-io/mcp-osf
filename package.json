@@ -1,12 +1,20 @@
 {
   "name": "@pipeworx/mcp-osf",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "description": "OSF (Open Science Framework, by the Center for Open Science) MCP. Keyless public-data API (JSON:API). https://api.osf.io/v2 The OSF API can be slow; responses may take several seconds.",
   "type": "module",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
   "bin": {
     "mcp-osf": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
   },
   "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "osf"],
   "license": "MIT",
@@ -14,19 +22,12 @@
     "type": "git",
     "url": "git+https://github.com/pipeworx-io/mcp-osf.git"
   },
-  "scripts": {
-    "typecheck": "tsc --noEmit"
-  },
-  "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.30.0",
-    "tsx": "^4.19.0"
-  },
-  "devDependencies": {
-    "typescript": "^5.9.3",
-    "@cloudflare/workers-types": "^4.20260405.1"
-  },
+  "mcpName": "io.github.pipeworx-io/osf",
   "pipeworx": {
-    "sourceHash": "v1-7adc5d267338c86a083d7c9eb6ab0ef1383fee59a3cee5a41ca46102e93bed10",
-    "sourceCommit": "f54ad77e789f27fe393978f9c080b5b18c87bb4f"
+    "mode": "gateway",
+    "slug": "osf",
+    "gatewaySlug": "osf",
+    "sourceHash": "v1-31512ed7ee78268703f7c36ad498c93c4769b0141bb6df2dda18d354f5e55b98",
+    "sourceCommit": "6bae4cfa7b6a73bbe014dc8820a19c80c842b21e"
   }
 }
